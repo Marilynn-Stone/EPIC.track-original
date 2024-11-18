@@ -16,6 +16,7 @@ export interface WorkIssue {
   expected_resolution_date: string;
   is_active: boolean;
   is_high_priority: boolean;
+  is_resolved: boolean;
   work_id: number;
   is_deleted: boolean;
   created_by: string;

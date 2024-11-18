@@ -167,6 +167,7 @@ export const IssuesProvider = ({
         expected_resolution_date,
         is_active,
         is_high_priority,
+        is_resolved,
       } = issueForm;
 
       const request = {
@@ -175,8 +176,11 @@ export const IssuesProvider = ({
         expected_resolution_date,
         is_active,
         is_high_priority,
+        is_resolved,
       };
-
+      console.log("request:", request);
+      console.log("workId:", workId);
+      console.log("issueToEdit.id:", issueToEdit.id);
       await issueService.editIssue(workId, String(issueToEdit.id), request);
       handleLoadIssues();
     } catch (error) {
