@@ -167,6 +167,7 @@ export const IssuesProvider = ({
         expected_resolution_date,
         is_active,
         is_high_priority,
+        is_resolved,
       } = issueForm;
 
       const request = {
@@ -175,6 +176,7 @@ export const IssuesProvider = ({
         expected_resolution_date,
         is_active,
         is_high_priority,
+        is_resolved,
       };
 
       await issueService.editIssue(workId, String(issueToEdit.id), request);
