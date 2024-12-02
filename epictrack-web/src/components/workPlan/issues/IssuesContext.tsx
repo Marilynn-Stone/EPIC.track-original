@@ -178,10 +178,13 @@ export const IssuesProvider = ({
         is_high_priority,
         is_resolved,
       };
-
+      console.warn("request:", request);
+      console.warn("workId:", workId);
+      console.warn("issueToEdit.id:", issueToEdit.id)
       await issueService.editIssue(workId, String(issueToEdit.id), request);
       handleLoadIssues();
     } catch (error) {
+      console.error("editIssue error:", error);
       const message = getErrorMessage(error);
       showNotification(message, {
         type: "error",

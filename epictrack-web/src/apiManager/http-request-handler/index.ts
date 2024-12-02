@@ -44,14 +44,26 @@ const PutRequest = <T>(url: string, data = {}, params = {}) => {
 };
 
 const PatchRequest = <T>(url: string, data = {}) => {
-  return instance.patch<T>(url, data, {
+  console.warn("PatchRequest - URL:", url); // Log the URL
+  console.warn("PatchRequest - Data:", data); // Log the data being sent
+  return instance
+  .patch<T>(url, data, {
     headers: {
       "Content-type": "application/json",
       Authorization: `Bearer ${
         UserService.getToken() || window.localStorage.getItem("authToken")
       }`,
     },
+  })
+  .then((response) => {
+    console.warn("PatchRequest - Response:", response); // Log the response
+    return response;
+  })
+  .catch((error) => {
+    console.warn("PatchRequest - Error:", error); // Log the error
+    throw error; // Ensure the error propagates
   });
+
 };
 
 const DeleteRequest = <T>(url: string, params = {}) => {

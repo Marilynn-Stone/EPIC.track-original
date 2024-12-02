@@ -26,7 +26,18 @@ class IssueService {
       workId
     )}`;
     query = query.replace(":issue_id", issue_id);
-    return await http.PatchRequest(query, JSON.stringify(data));
+    console.warn("query:", query);
+    console.warn("data:", data);
+
+    try {
+      const response = await http.PatchRequest(query, JSON.stringify(data));
+      console.warn("response data:", response); // Log the returned data
+      return response; // Return the response after logging it
+  } catch (error) {
+      console.warn("Error in editIssue:", error); // Log any errors
+      throw error; // Rethrow the error after logging
+  }
+    // return await http.PatchRequest(query, JSON.stringify(data));
   }
 
   async editIssueUpdate(
