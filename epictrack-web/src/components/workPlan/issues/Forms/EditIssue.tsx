@@ -81,7 +81,7 @@ const EditIssue = () => {
       is_high_priority: Boolean(is_high_priority),
       is_resolved: Boolean(is_resolved),
     };
-    console.info("dataToBeSubmitted:", dataToBeSubmitted)
+
     editIssue(dataToBeSubmitted);
     setEditIssueFormIsOpen(false);
     setUpdateToEdit(null);

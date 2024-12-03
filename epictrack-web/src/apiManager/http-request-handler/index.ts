@@ -44,8 +44,6 @@ const PutRequest = <T>(url: string, data = {}, params = {}) => {
 };
 
 const PatchRequest = <T>(url: string, data = {}) => {
-  console.warn("PatchRequest - URL:", url); // Log the URL
-  console.warn("PatchRequest - Data:", data); // Log the data being sent
   return instance
   .patch<T>(url, data, {
     headers: {
@@ -56,11 +54,11 @@ const PatchRequest = <T>(url: string, data = {}) => {
     },
   })
   .then((response) => {
-    console.warn("PatchRequest - Response:", response); // Log the response
+    // console.warn("PatchRequest - Response:", response); // Log the response
     return response;
   })
   .catch((error) => {
-    console.warn("PatchRequest - Error:", error); // Log the error
+    console.error("PatchRequest - Error:", error); // Log the error
     throw error; // Ensure the error propagates
   });
 

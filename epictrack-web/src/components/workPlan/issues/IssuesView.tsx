@@ -57,21 +57,28 @@ const IssuesView = () => {
                 </Button>
               </Restricted>
             </Grid>
-            {issues.map((issue, index) => (
-              <Grid key={`accordion-${issue.id}`} item xs={12}>
-                <IssueAccordion
-                  issue={issue}
-                  defaultOpen={
-                    lastInteractedIssue.current
-                      ? issue.id === lastInteractedIssue.current
-                      : index === 0
-                  }
-                  onInteraction={() => {
-                    lastInteractedIssue.current = issue.id;
-                  }}
-                />
-              </Grid>
-            ))}
+            {[...issues]
+              .sort((a, b) => {
+                if (a.is_resolved === b.is_resolved) {
+                  return 0;
+                }
+                return a.is_resolved ? 1 : -1;
+              })
+              .map((issue, index) => (
+                <Grid key={`accordion-${issue.id}`} item xs={12}>
+                  <IssueAccordion
+                    issue={issue}
+                    defaultOpen={
+                      lastInteractedIssue.current
+                        ? issue.id === lastInteractedIssue.current
+                        : index === 0
+                    }
+                    onInteraction={() => {
+                      lastInteractedIssue.current = issue.id;
+                    }}
+                  />
+                </Grid>
+              ))}
           </Grid>
         </Else>
       </If>
