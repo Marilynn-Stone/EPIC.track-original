@@ -34,6 +34,7 @@ export const defaultWorkIssue = {
   expected_resolution_date: "",
   active: false,
   high_priority: false,
+  is_resolved: false,
   updates: [],
 };
 

@@ -43,7 +43,7 @@ const IssueSummary = ({ issue }: { issue: WorkIssue }) => {
             </When>
             <Switch>
               <Case condition={issue.is_resolved}>
-                <ETChip active label="Resolved" />
+                <ETChip resolved label="Resolved" />
               </Case>
               <Case condition={issue.is_active}>
                   <ETChip active label="Active" />
