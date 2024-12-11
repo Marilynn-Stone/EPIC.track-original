@@ -40,7 +40,7 @@ from flask import current_app
 
 # pylint:disable=not-callable,no-member
 
-
+#TODO: Add filtering so resolved issues do not show on report MS Dec 2024
 class ThirtySixtyNinetyReport(ReportFactory):
     """EA 30-60-90 Report Generator"""
 

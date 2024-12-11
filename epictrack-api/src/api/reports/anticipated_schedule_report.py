@@ -292,7 +292,7 @@ class EAAnticipatedScheduleReport(ReportFactory):
             )
         )
         results = results_qry.all()
-        current_app.logger.debug(f"Fetched data: {results}")
+        # current_app.logger.debug(f"Fetched data: {results}")
         results_dict = [result._asdict() for result in results]
         # Processes the 'next_pecp_short_description' field in the results:
         #   - Logs the short description if it exists.
@@ -337,16 +337,18 @@ class EAAnticipatedScheduleReport(ReportFactory):
 
                 # go through all the work issues, find the update and add the description to the issue
                 for issue in work_issues:
+                  if not issue.is_resolved:
                     work_issue_updates = (
                         db.session.query(WorkIssueUpdates)
                         .filter_by(
                             work_issue_id=issue.id,
                             is_active=True,
-                            is_approved=True
+                            is_approved=True,
                         )
                         .order_by(WorkIssueUpdates.updated_at.desc())
                         .first()
                     )
+
                     if work_issue_updates:
                         for work_issue in item_dict['work_issues']:
                             if work_issue.id == issue.id:
