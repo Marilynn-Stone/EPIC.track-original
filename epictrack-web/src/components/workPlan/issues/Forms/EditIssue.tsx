@@ -23,12 +23,11 @@ const schema = yup.object().shape({
   is_high_priority: yup.boolean(),
   is_resolved: yup.boolean(),
   start_date: yup.string().required("Start date is required"),
-  expected_resolution_date: yup.string()
-    .when('is_resolved', {
-      is: true,
-      then: (schema) => schema.required("Missing Resolution Date"),
-      otherwise: (schema) => schema.nullable()
-    }),
+  expected_resolution_date: yup.string().when("is_resolved", {
+    is: true,
+    then: (schema) => schema.required("Missing Resolution Date"),
+    otherwise: (schema) => schema.nullable(),
+  }),
 });
 
 const EditIssue = () => {
@@ -175,7 +174,7 @@ const EditIssue = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <ETFormLabel >Resolution Date</ETFormLabel>
+          <ETFormLabel>Resolution Date</ETFormLabel>
           <ControlledDatePicker name="expected_resolution_date" />
         </Grid>
       </Grid>

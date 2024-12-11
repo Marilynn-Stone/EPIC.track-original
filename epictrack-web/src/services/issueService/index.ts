@@ -31,10 +31,10 @@ class IssueService {
       const response = await http.PatchRequest(query, JSON.stringify(data));
       console.warn("response data:", response); // Log the returned data
       return response; // Return the response after logging it
-  } catch (error) {
+    } catch (error) {
       console.error("Error in editIssue:", error); // Log any errors
       throw error; // Rethrow the error after logging
-  }
+    }
     // return await http.PatchRequest(query, JSON.stringify(data));
   }
 

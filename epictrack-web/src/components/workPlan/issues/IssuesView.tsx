@@ -29,9 +29,9 @@ const IssuesView = () => {
   const lastInteractedIssue = React.useRef<number | null>(null);
 
   // Sorting function
-  const sortIssues = (issues: WorkIssue[]): WorkIssue[]  => {
+  const sortIssues = (issues: WorkIssue[]): WorkIssue[] => {
     return [...issues].sort((a, b) => {
-        // First, sort by resolved status
+      // First, sort by resolved status
       if (a.is_resolved !== b.is_resolved) {
         return a.is_resolved ? 1 : -1; // Unresolved items come first
       }
