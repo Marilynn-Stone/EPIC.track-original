@@ -36,10 +36,10 @@ const IssuesView = () => {
         return a.is_resolved ? 1 : -1; // Unresolved items come first
       }
       // Then, sort by date
-      if (a.start_date < b.start_date) {
+      if (a.start_date > b.start_date) {
         return -1;
       }
-      if (a.start_date > b.start_date) {
+      if (a.start_date < b.start_date) {
         return 1;
       }
       return 0; //Equal
