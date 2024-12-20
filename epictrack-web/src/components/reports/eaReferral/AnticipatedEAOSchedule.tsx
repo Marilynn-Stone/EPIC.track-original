@@ -228,7 +228,7 @@ export default function AnticipatedEAOSchedule() {
                     </AccordionSummary>
                     <AccordionDetails>
                       {items.map((item, itemIndex) => {
-                        console.log("item:",item);
+                        console.log("item:", item);
                         return (
                           <Accordion key={itemIndex} elevation={0}>
                             <AccordionSummary
